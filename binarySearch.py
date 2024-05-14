@@ -1,5 +1,31 @@
+def quicksort(array, indexOfThelowest, indexOfThehighest):
+    if (indexOfThelowest >= indexOfThehighest):
+        return 
+    
+    pivot = array[(indexOfThelowest + indexOfThehighest)//2]       
+    i = indexOfThelowest - 1
+    j = indexOfThehighest + 1
+    while(True):
+        while(True):               
+            i += 1
+            if(array[i] >= pivot):
+                break
+        while(True):               
+            j -= 1
+            if(array[j] <= pivot):
+                break
+        if(i >= j):
+            break
+        
+        array[i], array[j] = array[j], array[i]
+    
+    quicksort(array, indexOfThelowest, j)
+    quicksort(array, j + 1, indexOfThehighest)
+
+    return array
 
 def binarySearch(list, item):
+    
     tooLow = 0
     tooHigh = len(list) - 1 
     
@@ -14,9 +40,10 @@ def binarySearch(list, item):
             tooLow = mid + 1
     return None
 
-listExample = [1, 3, 5, 7, 9, 11, 13]
-print(f"O elemento se localiza na posicao: {binarySearch(listExample, 3)}\n")
+listExample = [3, 9 , 10, 89, 2, 1, 30, 120]
+newList = quicksort(listExample)
+print(f"O elemento se localiza na posicao: {binarySearch(newList, 3)}\n")
 
-print(f"O elemento se localiza na posicao: {binarySearch(listExample, -1)}")
+print(f"O elemento se localiza na posicao: {binarySearch(newList, -1)}")
 
 
